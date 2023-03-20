@@ -31,21 +31,21 @@ function playRound(playerSelection, computerSelection) {
     if (player === 'rock' && robot == 'rock') {
         result = 'Draw';
     } else if (player === 'rock' && robot == 'paper'){
-        result = 'Lose';
+        result = 'Computer Wins!';
     } else if (player === 'rock' && robot == 'scissors') {
-        result = 'Win'
+        result = 'Player Wins!'
     } else if (player === 'paper' && robot == 'rock'){
-        result = 'Win'
+        result = 'Player Wins!'
     } else if (player === 'paper' && robot == 'paper'){
         result = 'Draw'
     } else if (player === 'paper' && robot == 'scissors') {
-        result = 'lose'
+        result = 'Computer Wins!'
     } else if (player === 'scissors' && robot == 'scissors') {
         result = 'Draw'
     } else if (player === 'scissors' && robot == 'paper') {
-        result = 'Win'
+        result = 'Player Wins!'
     } else if (player === 'scissors' && robot == 'rock') {
-        result = 'Lose'
+        result = 'Computer Wins!'
     }
     return result;
 }
@@ -60,7 +60,15 @@ function game(){
         // use playRound with player and computer selection, then inform who won the round
         let playerSelection = prompt('what is your selection please?')
         playRound(playerSelection, getComputerChoice());
-        console.log(`round number ${i} player ${playerSelection}: ${playerCount} computer ${computerSelection}: ${computerCount} result is ${result}`)
+        if (result == 'Draw'){
+            playerCount += 1;
+            computerCount += 1;
+        } else if (result == 'Player Wins!') {
+            playerCount += 1;
+        } else if (result == 'Computer Wins!') {
+            computerCount += 1;
+        }
+        console.log(`Round number: ${i} Winner is: ${result} Scores - Computer ${computerCount} , Player ${playerCount}`)
     }
 }
 

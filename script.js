@@ -47,6 +47,6 @@ function playRound(playerSelection, computerSelection) {
     return result;
 }
 
-let playerSelection = 'rock';
+let playerSelection = 'RoCK';
 console.log(computerSelection)
 console.log(playRound(playerSelection, computerSelection));

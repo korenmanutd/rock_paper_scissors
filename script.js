@@ -1,5 +1,7 @@
 let computerSelection;
 let result;
+let computerCount;
+let playerCount;
 
 // function that chooses random pick
 function getComputerChoice() {
@@ -47,6 +49,19 @@ function playRound(playerSelection, computerSelection) {
     return result;
 }
 
+
+// game() uses playeRound()
+function game(playerSelection, computerSelection){
+    //play every round until 5
+    for (let i = 0; i < 5; i++) {
+        // use playRound with player and computer selection, then inform who won this round
+        playRound(playerSelection, computerSelection);
+        console.log(`round number ${i}`)
+    }
+}
+
 let playerSelection = 'RoCK';
 console.log(computerSelection)
-console.log(playRound(playerSelection, computerSelection));
+// console.log(playRound(playerSelection, computerSelection));
+
+console.log(game(playerSelection, computerSelection))

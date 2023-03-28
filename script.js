@@ -2,7 +2,7 @@ let computerSelection;
 let result;
 
 
-// function that chooses random pick
+// function that chooses random pick for computer
 function getComputerChoice() {
     // create a rand generator from 1 to 3 (3 total options)
     let rand = Math.floor(Math.random() * 3) + 1;

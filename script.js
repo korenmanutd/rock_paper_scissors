@@ -55,51 +55,38 @@ function playRound(playerSelection, computerSelection) {
 function game(){
     let computerCount = 0;
     let playerCount = 0;
+
+    if (playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors') {
+        playRound(playerSelection, getComputerChoice());
+        if (result === 'Draw'){
+            playerCount += 1;
+            computerCount += 1;
+        } else if (result === 'Player Wins!'){
+            playerCount += 1;
+        } else if (result === 'Computer Wins!'){
+            computerCount += 1;
+        }
+    } else {
+        console.log('You didn\'t enter anything. You lose this round');
+        computerCount += 1;
+    }
+
+    console.log(`Round number: ${i} Winner is: ${result} Scores - Computer ${computerCount} , Player ${playerCount}`);
+
+    if (playerCount > computerCount) {
+    console.log(`Game finished. Player wins with the result: Player ${playerCount} Computer ${computerCount}`);
+    } else if (playerCount == computerCount) {
+    console.log(`Game finished. the result is a draw!!!!`);
+    } else {
+    console.log(`Game finished. Computer wins with the result: Computer ${computerCount} Player ${playerCount}`);
+    };
     //play every round until 5
-    for (let i = 1; i < 6; i++) {
+    // for (let i = 1; i < 6; i++) {
         // use playRound with player and computer selection, then inform who won the round
         // let playerSelection = prompt('what is your selection please? Rock, Paper or Scissors?').toLowerCase();
 
-            if (playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors') {
-                playRound(playerSelection, getComputerChoice());
-                if (result === 'Draw'){
-                    playerCount += 1;
-                    computerCount += 1;
-                } else if (result === 'Player Wins!'){
-                    playerCount += 1;
-                } else if (result === 'Computer Wins!'){
-                    computerCount += 1;
-                }
-            } else {
-                console.log('You didn\'t enter anything. You lose this round');
-                computerCount += 1;
-            }
-        // if (playerSelection === '') {
-        //     let playerSelection = prompt('Again, what is your selection? Rock, Paper or Scissors?');
-        // } else if (typeof playerSelection === 'number'){
-        //     let playerSelection = prompt('You have entered a number, doesn\'t make sense, does it? try again please!')
-        // } else if (playerSelection == 'rock' || playerSelection == 'scissors' || playerSelection == 'paper') {
-        //     playRound(playerSelection, getComputerChoice());
-        //     if (result === 'Draw'){
-        //         playerCount += 1;
-        //         computerCount += 1;
-        //     } else if (result === 'Player Wins!') {
-        //         playerCount += 1;
-        //     } else if (result === 'Computer Wins!') {
-        //         computerCount += 1;
-        //     }
-        // }
 
-        console.log(`Round number: ${i} Winner is: ${result} Scores - Computer ${computerCount} , Player ${playerCount}`)
-    }
-    if (playerCount > computerCount) {
-        console.log(`Game finished. Player wins with the result: Player ${playerCount} Computer ${computerCount}`)
-    } else if (playerCount == computerCount) {
-        console.log(`Game finished. the result is a draw!!!!`)
-    } else {
-        console.log(`Game finished. Computer wins with the result: Computer ${computerCount} Player ${playerCount}`)
-    }
-}
+    };
 
 console.log(computerSelection)
 // console.log(playRound(playerSelection, computerSelection));

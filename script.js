@@ -58,7 +58,7 @@ function game(){
     //play every round until 5
     for (let i = 1; i < 6; i++) {
         // use playRound with player and computer selection, then inform who won the round
-        let playerSelection = prompt('what is your selection please? Rock, Paper or Scissors?').toLowerCase();
+        // let playerSelection = prompt('what is your selection please? Rock, Paper or Scissors?').toLowerCase();
 
             if (playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors') {
                 playRound(playerSelection, getComputerChoice());

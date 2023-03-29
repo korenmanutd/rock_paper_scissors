@@ -6,6 +6,7 @@ const buttons = document.querySelectorAll('button');
 const body = document.querySelector('body');
 
 body.insertBefore(div, body.firstChild);
+buttons.forEach(button => div.appendChild(button));
 
 // function that chooses random pick
 function getComputerChoice() {

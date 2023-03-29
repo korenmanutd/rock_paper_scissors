@@ -1,9 +1,13 @@
 let computerSelection;
 let playerSelection;
+let playerCount = 0;
+let computerCount = 0;
 let result;
 
 const div = document.createElement('div');
 const resultDiv = document.createElement('div');
+const para = document.createElement('p');
+const paraTwo = document.createElement('p');
 const buttons = document.querySelectorAll('button');
 const body = document.querySelector('body');
 
@@ -12,7 +16,12 @@ resultDiv.classList.add = 'results';
 
 body.insertBefore(div, body.firstChild);
 div.insertBefore(resultDiv, div.firstChild);
+resultDiv.appendChild(para);
+resultDiv.appendChild(paraTwo);
 buttons.forEach(button => div.appendChild(button));
+
+paraTwo.textContent = `SCORES = Player - ${playerCount}
+Computer - ${computerCount}`;
 
 // function that chooses random pick
 function getComputerChoice() {
@@ -31,8 +40,20 @@ function getComputerChoice() {
 
 // listen to button click, once clicked - return id of button and call the computer choice function
 buttons.forEach(button => button.addEventListener('click', (e) => {
-    console.log(playRound(e.target.id, getComputerChoice()));
-}))
+    playRound(e.target.id, getComputerChoice());
+    if (result == 'player'){
+        playerCount +=  1;
+        para.textContent = `Player wins this round.`;
+    } else if (result == 'computer'){
+        computerCount += 1;
+        para.textContent = 'Computer wins this round.';
+    };
+    paraTwo.textContent = `SCORES: Player - ${playerCount}
+    Computer - ${computerCount}`;
+    console.log(playerCount)
+    console.log(computerCount)
+}));
+
 
 
 //function that plays a single game with two parameters (playerSelection, computerSelection)
@@ -44,24 +65,25 @@ function playRound(playerSelection, computerSelection) {
     // let robot = computerSelection.toLowerCase();
 
     if (playerSelection === 'rock' && computerSelection == 'rock') {
-        resultDiv.textContent = 'Draw';
+        result = 'draw';
     } else if (playerSelection === 'rock' && computerSelection == 'paper'){
-        resultDiv.textContent = 'Computer Wins!';
+        result = 'computer';
     } else if (playerSelection === 'rock' && computerSelection == 'scissors') {
-        resultDiv.textContent = 'Player Wins!'
+        result = 'player';
     } else if (playerSelection === 'paper' && computerSelection == 'rock'){
-        resultDiv.textContent = 'Player Wins!'
+        result = 'player';
     } else if (playerSelection === 'paper' && computerSelection == 'paper'){
-        resultDiv.textContent = 'Draw'
+        result = 'draw';
     } else if (playerSelection === 'paper' && computerSelection == 'scissors') {
-        resultDiv.textContent = 'Computer Wins!'
+        result = 'computer';
     } else if (playerSelection === 'scissors' && computerSelection == 'scissors') {
-        resultDiv.textContent = 'Draw'
+        result = 'draw';
     } else if (playerSelection === 'scissors' && computerSelection == 'paper') {
-        resultDiv.textContent = 'Player Wins!'
+        result = 'player';
     } else if (playerSelection === 'scissors' && computerSelection == 'rock') {
-        resultDiv.textContent = 'Computer Wins!'
+        result = 'computer';
     }
+    return result;
 }
 
 // game() uses playRound()

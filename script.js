@@ -44,25 +44,24 @@ function playRound(playerSelection, computerSelection) {
     // let robot = computerSelection.toLowerCase();
 
     if (playerSelection === 'rock' && computerSelection == 'rock') {
-        result = 'Draw';
+        resultDiv.textContent = 'Draw';
     } else if (playerSelection === 'rock' && computerSelection == 'paper'){
-        result = 'Computer Wins!';
+        resultDiv.textContent = 'Computer Wins!';
     } else if (playerSelection === 'rock' && computerSelection == 'scissors') {
-        result = 'Player Wins!'
+        resultDiv.textContent = 'Player Wins!'
     } else if (playerSelection === 'paper' && computerSelection == 'rock'){
-        result = 'Player Wins!'
+        resultDiv.textContent = 'Player Wins!'
     } else if (playerSelection === 'paper' && computerSelection == 'paper'){
-        result = 'Draw'
+        resultDiv.textContent = 'Draw'
     } else if (playerSelection === 'paper' && computerSelection == 'scissors') {
-        result = 'Computer Wins!'
+        resultDiv.textContent = 'Computer Wins!'
     } else if (playerSelection === 'scissors' && computerSelection == 'scissors') {
-        result = 'Draw'
+        resultDiv.textContent = 'Draw'
     } else if (playerSelection === 'scissors' && computerSelection == 'paper') {
-        result = 'Player Wins!'
+        resultDiv.textContent = 'Player Wins!'
     } else if (playerSelection === 'scissors' && computerSelection == 'rock') {
-        result = 'Computer Wins!'
+        resultDiv.textContent = 'Computer Wins!'
     }
-    return result;
 }
 
 // game() uses playRound()

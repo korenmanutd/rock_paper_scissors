@@ -3,11 +3,15 @@ let playerSelection;
 let result;
 
 const div = document.createElement('div');
-div.classList.add('content')
+const resultDiv = document.createElement('div');
 const buttons = document.querySelectorAll('button');
 const body = document.querySelector('body');
 
+div.classList.add('mainDiv');
+resultDiv.classList.add = 'results';
+
 body.insertBefore(div, body.firstChild);
+div.insertBefore(resultDiv, div.firstChild);
 buttons.forEach(button => div.appendChild(button));
 
 // function that chooses random pick

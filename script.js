@@ -1,7 +1,9 @@
 let computerSelection;
 let playerSelection;
 let result;
+
 const div = document.createElement('div');
+div.classList.add('content')
 const buttons = document.querySelectorAll('button');
 const body = document.querySelector('body');
 

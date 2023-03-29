@@ -1,8 +1,11 @@
 let computerSelection;
 let playerSelection;
 let result;
+const div = document.createElement('div');
 const buttons = document.querySelectorAll('button');
+const body = document.querySelector('body');
 
+body.insertBefore(div, body.firstChild);
 
 // function that chooses random pick
 function getComputerChoice() {

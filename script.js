@@ -1,13 +1,14 @@
 let computerSelection;
-let playerSelection;
 let playerCount = 0;
 let computerCount = 0;
+let playerSelection;
 let result;
 
 const div = document.createElement('div');
 const resultDiv = document.createElement('div');
 const para = document.createElement('p');
 const paraTwo = document.createElement('p');
+const paraResult = document.createElement('p')
 const buttons = document.querySelectorAll('button');
 const body = document.querySelector('body');
 
@@ -18,6 +19,7 @@ body.insertBefore(div, body.firstChild);
 div.insertBefore(resultDiv, div.firstChild);
 resultDiv.appendChild(para);
 resultDiv.appendChild(paraTwo);
+resultDiv.insertBefore(paraResult, resultDiv.firstChild);
 buttons.forEach(button => div.appendChild(button));
 
 paraTwo.textContent = `SCORES = Player - ${playerCount}
@@ -39,20 +41,21 @@ function getComputerChoice() {
 }
 
 // listen to button click, once clicked - return id of button and call the computer choice function
-buttons.forEach(button => button.addEventListener('click', (e) => {
-    playRound(e.target.id, getComputerChoice());
-    if (result == 'player'){
-        playerCount +=  1;
-        para.textContent = `Player wins this round.`;
-    } else if (result == 'computer'){
-        computerCount += 1;
-        para.textContent = 'Computer wins this round.';
-    };
-    paraTwo.textContent = `SCORES: Player - ${playerCount}
-    Computer - ${computerCount}`;
-    console.log(playerCount)
-    console.log(computerCount)
-}));
+
+// buttons.forEach(button => button.addEventListener('click', (e) => {
+//     playRound(e.target.id, getComputerChoice());
+//     if (result == 'player'){
+//         playerCount +=  1;
+//         para.textContent = `Player wins this round.`;
+//     } else if (result == 'computer'){
+//         computerCount += 1;
+//         para.textContent = 'Computer wins this round.';
+//     } else {
+//         para.textContent = 'DRAW';
+//     };
+//     paraTwo.textContent = `SCORES: Player - ${playerCount}
+//     Computer - ${computerCount}`;
+// }));
 
 
 
@@ -60,31 +63,64 @@ buttons.forEach(button => button.addEventListener('click', (e) => {
 
 function playRound(playerSelection, computerSelection) {
 
+    let tie = 'draw';
+    let playerWin = 'player';
+    let computerWin = 'computer';
     // not to take into account case-sensitivity
     // let player = playerSelection.toLowerCase();
     // let robot = computerSelection.toLowerCase();
 
     if (playerSelection === 'rock' && computerSelection == 'rock') {
-        result = 'draw';
+        return tie;
     } else if (playerSelection === 'rock' && computerSelection == 'paper'){
-        result = 'computer';
+        computerCount++;
+        return computerWin;
     } else if (playerSelection === 'rock' && computerSelection == 'scissors') {
-        result = 'player';
+        playerCount++;
+        return playerWin;
     } else if (playerSelection === 'paper' && computerSelection == 'rock'){
-        result = 'player';
+        playerCount++;
+        return playerWin;
     } else if (playerSelection === 'paper' && computerSelection == 'paper'){
-        result = 'draw';
+        return tie;
     } else if (playerSelection === 'paper' && computerSelection == 'scissors') {
-        result = 'computer';
+        computerCount++;
+        return computerWin;
     } else if (playerSelection === 'scissors' && computerSelection == 'scissors') {
-        result = 'draw';
+        return tie;
     } else if (playerSelection === 'scissors' && computerSelection == 'paper') {
-        result = 'player';
+        playerCount++;
+        return playerWin;
     } else if (playerSelection === 'scissors' && computerSelection == 'rock') {
-        result = 'computer';
+        computerCount++;
+        return computerWin;
     }
-    return result;
 }
+
+
+function game(){
+    paraTwo.textContent = `SCORES = Player - ${playerCount}
+    Computer - ${computerCount}`;
+    if(playerCount === 5){
+        para.textContent = `Player wins the game. score is ${playerCount}`;
+    } else if (computerCount === 5){
+        para.textContent = `Computer wins the game. score is ${computerCount}`;
+    };
+};
+
+const playButton = buttons.forEach((button) => {
+        button.addEventListener('click', function(e) {
+            playerSelection = e.target.id;
+            computerSelection = getComputerChoice();
+            if(playerCount === 5 || computerCount === 5){
+                paraResult.textContent = 'GAME OVER';
+            } else {
+                console.log(playRound(playerSelection, computerSelection));
+                game();
+            }
+
+        });
+    });
 
 // game() uses playRound()
 // function game(){

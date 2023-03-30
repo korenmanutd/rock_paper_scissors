@@ -116,7 +116,7 @@ const playButton = buttons.forEach((button) => {
             computerSelection = getComputerChoice();
             //if count reached 5, exit using gameOver
             if(playerCount === 5 || computerCount === 5){
-                paraResult.textContent = 'GAME OVER';
+                alert('GAME OVER')
             //playRound until reaches 5
             } else {
                 console.log(playRound(playerSelection, computerSelection));

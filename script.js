@@ -97,10 +97,11 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-
+//function game () gets called when button pressed
 function game(){
     paraTwo.textContent = `SCORES = Player - ${playerCount}
     Computer - ${computerCount}`;
+    //show this when player or computer win 5 rounds
     if(playerCount === 5){
         para.textContent = `Player wins the game. score is ${playerCount}`;
     } else if (computerCount === 5){
@@ -108,12 +109,15 @@ function game(){
     };
 };
 
+//call each button and playRound with button ID.
 const playButton = buttons.forEach((button) => {
         button.addEventListener('click', function(e) {
             playerSelection = e.target.id;
             computerSelection = getComputerChoice();
+            //if count reached 5, exit using gameOver
             if(playerCount === 5 || computerCount === 5){
                 paraResult.textContent = 'GAME OVER';
+            //playRound until reaches 5
             } else {
                 console.log(playRound(playerSelection, computerSelection));
                 game();
